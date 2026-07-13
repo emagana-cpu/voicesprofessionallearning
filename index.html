@@ -14,13 +14,13 @@
     --paper:#F7F6F1;
     --card:#FFFFFF;
     --line:#E1DCCE;
-    --teal:#2F6B66;
-    --teal-deep:#1F4A47;
-    --marigold:#E3A857;
-    --marigold-deep:#B9812F;
+    --teal:#5B1F9E;
+    --teal-deep:#3D1470;
+    --marigold:#7CB342;
+    --marigold-deep:#5C8A2E;
     --alert:#C1442D;
     --alert-bg:#FBE4DC;
-    --focus:#1F4A47;
+    --focus:#3D1470;
     --radius:14px;
   }
   *{box-sizing:border-box;}
@@ -40,6 +40,8 @@
     display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;
     padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:22px;
   }
+  .brand-row{display:flex;align-items:center;gap:16px;}
+  .brand-logo{height:58px;width:auto;flex-shrink:0;}
   .brand-eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-deep);font-weight:600;margin:0 0 6px;}
   h1.title{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:600;font-size:clamp(28px,4vw,42px);margin:0;letter-spacing:-0.01em;}
   h1.title small{display:block;font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;color:var(--ink-soft);letter-spacing:0;margin-top:6px;}
@@ -212,18 +214,21 @@
 <div class="app">
 
   <header class="top">
-    <div>
-      <p class="brand-eyebrow">Voices College-Bound Language Academies</p>
-      <h1 class="title">Professional Learning Portal
-        <small>Aprendizaje profesional en Voices — browse upcoming sessions by role, site, and date</small>
-      </h1>
+    <div class="brand-row">
+      <img src="https://voicesacademies.org/wp-content/uploads/2023/08/logo-new.png" alt="Voices College-Bound Language Academies" class="brand-logo">
+      <div>
+        <p class="brand-eyebrow">Voices College-Bound Language Academies</p>
+        <h1 class="title">Professional Learning Portal
+          <small>Aprendizaje profesional en Voices — browse upcoming sessions by role, site, and date</small>
+        </h1>
+      </div>
     </div>
     <div class="stat-strip" id="statStrip"></div>
   </header>
 
   <svg class="weave" viewBox="0 0 600 10" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,5 Q15,-2 30,5 T60,5 T90,5 T120,5 T150,5 T180,5 T210,5 T240,5 T270,5 T300,5 T330,5 T360,5 T390,5 T420,5 T450,5 T480,5 T510,5 T540,5 T570,5 T600,5" fill="none" stroke="#E3A857" stroke-width="1.6" opacity="0.7"/>
-    <path d="M0,5 Q15,12 30,5 T60,5 T90,5 T120,5 T150,5 T180,5 T210,5 T240,5 T270,5 T300,5 T330,5 T360,5 T390,5 T420,5 T450,5 T480,5 T510,5 T540,5 T570,5 T600,5" fill="none" stroke="#2F6B66" stroke-width="1.6" opacity="0.7"/>
+    <path d="M0,5 Q15,-2 30,5 T60,5 T90,5 T120,5 T150,5 T180,5 T210,5 T240,5 T270,5 T300,5 T330,5 T360,5 T390,5 T420,5 T450,5 T480,5 T510,5 T540,5 T570,5 T600,5" fill="none" stroke="#7CB342" stroke-width="1.6" opacity="0.7"/>
+    <path d="M0,5 Q15,12 30,5 T60,5 T90,5 T120,5 T150,5 T180,5 T210,5 T240,5 T270,5 T300,5 T330,5 T360,5 T390,5 T420,5 T450,5 T480,5 T510,5 T540,5 T570,5 T600,5" fill="none" stroke="#5B1F9E" stroke-width="1.6" opacity="0.7"/>
   </svg>
 
   <div class="controls">
