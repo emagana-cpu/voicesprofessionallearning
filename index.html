@@ -600,6 +600,7 @@ clearRolesBtn.onclick = () => {
 };
 roleDropdown.appendChild(clearRolesBtn);
 roles.forEach((r,i)=>{
+  if(i === 0) return; // "All Staff" isn't a selectable filter — those sessions always show regardless of role
   const label = document.createElement('label');
   const cb = document.createElement('input');
   cb.type = 'checkbox';
@@ -818,8 +819,10 @@ document.getElementById('nextMonth').onclick = () => {
 function matchesSiteRole(item){
   if(state.site !== '' && !item.s.includes(Number(state.site))) return false;
   if(state.roleIdxs.size > 0){
-    let hit = false;
-    for(const ri of state.roleIdxs){ if(item.r.includes(ri)){ hit = true; break; } }
+    let hit = item.r.includes(0); // "All Staff" sessions always match, regardless of which roles are selected
+    if(!hit){
+      for(const ri of state.roleIdxs){ if(item.r.includes(ri)){ hit = true; break; } }
+    }
     if(!hit) return false;
   } else {
     return false; // role required — nothing matches until at least one role is chosen
@@ -989,16 +992,43 @@ function renderDaySummary(nonDateFiltered, mealItems){
 }
 
 // ---------- Calendar export (per-session) ----------
+// All session times in the data (item.st / item.en) are wall-clock Pacific
+// Time (America/Los_Angeles), regardless of what timezone the viewer's own
+// browser or device is set to. To export correctly (Google Calendar link,
+// .ics downloads, subscribe feeds) we need the real UTC instant, not just
+// the raw numbers. pacificWallClockToUTC uses the browser's own IANA
+// timezone database (via Intl) to find the correct offset for the given
+// date — this handles PST/PDT automatically and stays correct even if DST
+// rules change later, without us having to hand-roll the transition dates.
 function pad2(n){ return String(n).padStart(2, '0'); }
+
+function pacificWallClockToUTC(year, month, day, hour, minute){
+  const guessUTC = Date.UTC(year, month - 1, day, hour, minute, 0);
+  const fmt = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Los_Angeles', hour12: false,
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  });
+  const parts = {};
+  fmt.formatToParts(new Date(guessUTC)).forEach(p => { parts[p.type] = p.value; });
+  const asIfPacific = Date.UTC(
+    Number(parts.year), Number(parts.month) - 1, Number(parts.day),
+    Number(parts.hour) === 24 ? 0 : Number(parts.hour), Number(parts.minute), Number(parts.second)
+  );
+  const diff = guessUTC - asIfPacific;
+  return new Date(guessUTC + diff);
+}
 
 function parseItemDate(str){
   if(!str) return null;
-  const d = new Date(String(str).replace(' ', 'T'));
-  return isNaN(d.getTime()) ? null : d;
+  const m = String(str).match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/);
+  if(!m) return null;
+  const y = Number(m[1]), mo = Number(m[2]), da = Number(m[3]), h = Number(m[4]), mi = Number(m[5]);
+  return pacificWallClockToUTC(y, mo, da, h, mi);
 }
 
-function toGCalDateStr(d){
-  return `${d.getFullYear()}${pad2(d.getMonth()+1)}${pad2(d.getDate())}T${pad2(d.getHours())}${pad2(d.getMinutes())}00`;
+function toUTCIcsStr(d){
+  return `${d.getUTCFullYear()}${pad2(d.getUTCMonth()+1)}${pad2(d.getUTCDate())}T${pad2(d.getUTCHours())}${pad2(d.getUTCMinutes())}${pad2(d.getUTCSeconds())}Z`;
 }
 
 function googleCalendarUrl(item){
@@ -1008,7 +1038,7 @@ function googleCalendarUrl(item){
   const params = new URLSearchParams({
     action: 'TEMPLATE',
     text: item.n || 'PL Session',
-    dates: `${toGCalDateStr(start)}/${toGCalDateStr(end)}`,
+    dates: `${toUTCIcsStr(start)}/${toUTCIcsStr(end)}`,
     details: item.d || '',
     location: item.loc || ''
   });
@@ -1027,9 +1057,9 @@ function buildIcsEvent(item){
     'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Voices PL Portal//EN','CALSCALE:GREGORIAN',
     'BEGIN:VEVENT',
     `UID:pl-${item.id}@voicesprofessionallearning`,
-    `DTSTAMP:${toGCalDateStr(new Date())}`,
-    `DTSTART:${toGCalDateStr(start)}`,
-    `DTEND:${toGCalDateStr(end)}`,
+    `DTSTAMP:${toUTCIcsStr(new Date())}`,
+    `DTSTART:${toUTCIcsStr(start)}`,
+    `DTEND:${toUTCIcsStr(end)}`,
     `SUMMARY:${icsEscape(item.n)}`,
   ];
   if(item.loc) lines.push(`LOCATION:${icsEscape(item.loc)}`);
