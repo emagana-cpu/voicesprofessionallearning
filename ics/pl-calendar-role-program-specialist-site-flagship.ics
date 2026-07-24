@@ -1,0 +1,86 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Voices PL Portal//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Voices PL — Program Specialist @ Flagship
+X-WR-CALDESC:Professional Learning sessions for Voices College-Bound Language Academies staff.
+BEGIN:VEVENT
+UID:pl-12306737886@voicesprofessionallearning
+DTSTAMP:20260724T033630Z
+DTSTART:20260728T160000Z
+DTEND:20260728T190000Z
+SUMMARY:MTSS: Tiered Supports
+DESCRIPTION:Tiered supports vs SPED  ELD/SLD SPED  Panorama  Director of Student and Family Services
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-12306798574@voicesprofessionallearning
+DTSTAMP:20260724T033630Z
+DTSTART:20260803T160000Z
+DTEND:20260803T190000Z
+SUMMARY:TK-3rd Grade Alignment
+LOCATION:Santa Clara County Office of Education\, Ridder Park Drive\, San Jose\, CA\, USA
+DESCRIPTION:ONLY FOR TK-3rd: The session will focus on the California Preschool through Third Grade (PK-3) Learning Progressions which map the developmental pathways of children's knowledge and skills over time. They ensure continuous\, developmentally appropriate education by linking early learning foundations to later elementary standards across five core developmental domains.\n\nThe session will be recorded\; therefore\, a waiver must be signed upon arrival and check-in.\n\nThere will be assigned seating.
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-12306847493@voicesprofessionallearning
+DTSTAMP:20260724T033630Z
+DTSTART:20260803T200000Z
+DTEND:20260803T230000Z
+SUMMARY:TK PTKLF
+LOCATION:Santa Clara County Office of Education\, Ridder Park Drive\, San Jose\, CA\, USA
+DESCRIPTION:ONLY TK: Learning all about the PTKLF and how to implement it.
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-12306844649@voicesprofessionallearning
+DTSTAMP:20260724T033630Z
+DTSTART:20260804T153000Z
+DTEND:20260804T173000Z
+SUMMARY:TK-8th UC Davis: CA Social Studies/History Framework
+DESCRIPTION:Learn all about the California History and Social Studies Standards and Framework. Virtual: https://voicescharterschool.zoom.us/j/82529509967
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-12306659628@voicesprofessionallearning
+DTSTAMP:20260724T033630Z
+DTSTART:20260728T160000Z
+DTEND:20260728T223000Z
+SUMMARY:Character-Based Behavior System
+LOCATION:Voices Academy Mount Pleasant\, Story Road\, San Jose\, CA\, USA
+DESCRIPTION:Roxanna – Work with leadership to set them up to deliver training and support to staff (Part 1 of Character-Based Behavior System):
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-12321911092@voicesprofessionallearning
+DTSTAMP:20260724T033630Z
+DTSTART:20260826T204500Z
+DTEND:20260826T220000Z
+SUMMARY:Gen Ed supporting different learners
+LOCATION:Voices College-Bound Language Academy\, Hellyer Avenue\, San Jose\, CA\, USA
+DESCRIPTION:How general education teachers can support different learning styles\, legal requirements\, how to read an IEP
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-12414659903@voicesprofessionallearning
+DTSTAMP:20260724T033630Z
+DTSTART:20260723T163000Z
+DTEND:20260723T190000Z
+SUMMARY:Ensemble Leader PD
+LOCATION:715 Hellyer Avenue\, San Jose\, CA\, USA
+DESCRIPTION:https://us02web.zoom.us/j/83463420633?pwd=yK7I9Is6OtDFWxONdE2r48SvLegpFj.1
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-12414657693@voicesprofessionallearning
+DTSTAMP:20260724T033630Z
+DTSTART:20260723T200000Z
+DTEND:20260723T213000Z
+SUMMARY:Ensemble Leader PD Continued
+LOCATION:715 Hellyer Avenue\, San Jose\, CA\, USA
+DESCRIPTION:https://us02web.zoom.us/j/83463420633?pwd=yK7I9Is6OtDFWxONdE2r48SvLegpFj.1
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-12523592510@voicesprofessionallearning
+DTSTAMP:20260724T033630Z
+DTSTART:20260806T173000Z
+DTEND:20260806T183000Z
+SUMMARY:TK Scope and Sequence Overview
+DESCRIPTION:Virtual: https://voicescharterschool.zoom.us/j/84609425664
+END:VEVENT
+END:VCALENDAR
